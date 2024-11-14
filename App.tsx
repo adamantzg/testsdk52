@@ -1,7 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import * as SQLite from 'expo-sqlite';
 
 export default function App() {
+  if(Platform.OS !== 'web') {
+    const db = SQLite.openDatabaseSync('db.db');
+  }
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
